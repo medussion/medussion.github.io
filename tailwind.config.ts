@@ -10,15 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#0f1117',
-        surface: '#161b27',
-        'surface-2': '#1e2535',
-        border: '#2a3349',
-        accent: '#7c3aed',
-        'accent-light': '#a78bfa',
+        background: '#ffffff',
+        surface: '#f8fafc',
+        'surface-2': '#f1f5f9',
+        border: '#e2e8f0',
+        accent: '#2563eb',
+        'accent-light': '#1d4ed8',
         'accent-blue': '#3b82f6',
-        muted: '#94a3b8',
-        foreground: '#e2e8f0',
+        muted: '#64748b',
+        foreground: '#0f172a',
       },
       fontFamily: {
         sans: [
@@ -44,7 +44,7 @@ const config: Config = {
             color: theme('colors.foreground'),
             maxWidth: 'none',
             a: {
-              color: theme('colors.accent-light'),
+              color: theme('colors.accent'),
               textDecoration: 'none',
               '&:hover': {
                 color: theme('colors.accent-light'),
@@ -57,8 +57,8 @@ const config: Config = {
             h4: { color: theme('colors.foreground') },
             strong: { color: theme('colors.foreground') },
             code: {
-              color: '#a78bfa',
-              backgroundColor: '#1e2535',
+              color: '#1d4ed8',
+              backgroundColor: '#eff6ff',
               borderRadius: '0.25rem',
               padding: '0.125rem 0.375rem',
               fontWeight: '400',
@@ -66,8 +66,8 @@ const config: Config = {
               '&::after': { content: '""' },
             },
             pre: {
-              backgroundColor: '#161b27',
-              border: '1px solid #2a3349',
+              backgroundColor: '#1e293b',
+              border: '1px solid #334155',
               borderRadius: '0.5rem',
             },
             blockquote: {
@@ -83,8 +83,8 @@ const config: Config = {
                 borderBottomColor: theme('colors.border'),
               },
             },
-            'ul > li::marker': { color: theme('colors.accent-light') },
-            'ol > li::marker': { color: theme('colors.accent-light') },
+            'ul > li::marker': { color: theme('colors.accent') },
+            'ol > li::marker': { color: theme('colors.accent') },
           },
         },
       }),

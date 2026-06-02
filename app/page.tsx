@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getAllPosts, getAllCategories } from '@/lib/posts'
 import PostCard from '@/components/PostCard'
 import CategoryNav from '@/components/CategoryNav'
+import AuthorProfile from '@/components/AuthorProfile'
 
 export default function HomePage() {
   const allPosts = getAllPosts()
@@ -10,27 +11,12 @@ export default function HomePage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      {/* Hero */}
-      <section className="mb-12 text-center">
-        <h1 className="mb-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          <span className="bg-gradient-to-r from-accent-light to-accent-blue bg-clip-text text-transparent">
-            메두사 개발 연구소
-          </span>
-        </h1>
-        <p className="text-muted text-base sm:text-lg max-w-xl mx-auto">
-          게임 개발, C++, C#, Unity, 디자인 패턴을 공부하고 정리하는 기술 블로그
-        </p>
-      </section>
-
       <div className="flex flex-col gap-8 lg:flex-row">
         {/* Main content */}
         <div className="flex-1 min-w-0">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-foreground">최근 게시물</h2>
-            <Link
-              href="/blog"
-              className="text-sm text-accent-light hover:underline"
-            >
+            <h2 className="text-lg font-bold text-foreground">최근 게시물</h2>
+            <Link href="/blog" className="text-sm text-accent hover:underline font-medium">
               전체 보기 →
             </Link>
           </div>
@@ -51,7 +37,7 @@ export default function HomePage() {
             <div className="mt-8 text-center">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground hover:border-accent/50 hover:bg-surface-2 transition-all"
+                className="inline-flex items-center gap-2 rounded-lg border border-accent/30 bg-white px-5 py-2.5 text-sm font-medium text-accent hover:bg-accent hover:text-white transition-all shadow-sm"
               >
                 게시물 더 보기
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -63,22 +49,25 @@ export default function HomePage() {
         </div>
 
         {/* Sidebar */}
-        <aside className="w-full lg:w-56 xl:w-64 flex-shrink-0">
-          <div className="sticky top-20 rounded-xl border border-border bg-surface p-4">
-            <CategoryNav categories={categories} />
+        <aside className="w-full lg:w-60 xl:w-64 flex-shrink-0">
+          <div className="sticky top-20 flex flex-col gap-4">
+            {/* Author Profile */}
+            <AuthorProfile />
 
-            <div className="mt-6 border-t border-border pt-5">
-              <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">
-                정보
-              </h2>
-              <div className="space-y-2 text-sm text-muted">
-                <div className="flex justify-between">
-                  <span>게시물</span>
-                  <span className="font-medium text-foreground">{allPosts.length}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>카테고리</span>
-                  <span className="font-medium text-foreground">{Object.keys(categories).length}</span>
+            {/* Category Nav */}
+            <div className="rounded-xl border border-border bg-white p-4 shadow-sm">
+              <CategoryNav categories={categories} />
+
+              <div className="mt-4 border-t border-border pt-4">
+                <div className="space-y-1.5 text-sm text-muted">
+                  <div className="flex justify-between">
+                    <span>전체 게시물</span>
+                    <span className="font-semibold text-foreground">{allPosts.length}개</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>카테고리</span>
+                    <span className="font-semibold text-foreground">{Object.keys(categories).length}개</span>
+                  </div>
                 </div>
               </div>
             </div>

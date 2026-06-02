@@ -14,7 +14,7 @@ export default function Footer() {
               href="https://github.com/medussion"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-accent-light transition-colors"
+              className="hover:text-accent transition-colors"
             >
               GitHub
             </a>
