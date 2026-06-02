@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent/60;
+  }
+}
+
+@layer components {
+  /* Notice blocks - Jekyll compatibility */
+  .notice {
+    @apply my-4 rounded-lg border border-border bg-surface-2 p-4 text-sm text-muted;
+  }
+  .notice--warning {
+    @apply my-4 rounded-lg border-l-4 border-yellow-500/60 bg-yellow-500/5 p-4 text-sm text-foreground/80;
+  }
+  .notice--info {
+    @apply my-4 rounded-lg border-l-4 border-accent-blue/60 bg-accent-blue/5 p-4 text-sm text-foreground/80;
+  }
+  .notice--danger {
+    @apply my-4 rounded-lg border-l-4 border-red-500/60 bg-red-500/5 p-4 text-sm text-foreground/80;
+  }
+  .notice--success {
+    @apply my-4 rounded-lg border-l-4 border-green-500/60 bg-green-500/5 p-4 text-sm text-foreground/80;
+  }
+
+  /* Prose overrides for code blocks */
+  .prose pre {
+    @apply relative overflow-x-auto;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-inherit;
+    font-size: 0.875rem;
+  }
+
+  /* Highlight.js theme overrides for dark mode */
+  .hljs {
+    @apply bg-surface text-foreground;
+  }
+
+  /* Card hover animation */
+  .stretched-link::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    z-index: 1;
+  }
+
+  /* Post content images */
+  .prose img {
+    @apply rounded-lg border border-border mx-auto;
+  }
+
+  /* Table styling */
+  .prose table {
+    @apply border-collapse w-full;
+  }
+  .prose th,
+  .prose td {
+    @apply border border-border px-3 py-2 text-sm;
+  }
+  .prose th {
+    @apply bg-surface-2 text-foreground font-medium;
+  }
+  .prose td {
+    @apply text-muted;
+  }
+}
+
+/* Syntax highlighting - One Dark inspired */
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #c678dd;
+}
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #e06c75;
+}
+.hljs-literal {
+  color: #56b6c2;
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string {
+  color: #98c379;
+}
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: #d19a66;
+}
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #61aeee;
+}
+.hljs-built_in,
+.hljs-title.class_,
+.hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: bold;
+}
+.hljs-link {
+  text-decoration: underline;
+}
