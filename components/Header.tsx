@@ -19,8 +19,8 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         {/* Logo */}
         <Link href="/" className="group flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-accent to-accent-blue flex items-center justify-center text-white font-bold text-sm select-none">
-            M
+          <div className="h-8 w-8 rounded-lg overflow-hidden border border-border flex-shrink-0">
+            <img src="/images/profile.png" alt="로고" className="h-full w-full object-cover" />
           </div>
           <span className="text-lg font-bold text-foreground group-hover:text-accent transition-colors">
             메두사 개발 연구소
