@@ -2,8 +2,6 @@ backend:
   name: github
   repo: medussion/medussion.github.io
   branch: main
-  auth_type: pkce
-  app_id: Ov23liEIeuxOp7Le8Z8g
 
 media_folder: public/images/postImage
 public_folder: /images/postImage
