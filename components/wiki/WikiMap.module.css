@@ -1,6 +1,5 @@
 .hero {
   position: relative;
-  overflow: hidden;
   min-height: 100%;
   color: #0f172a;
   background-color: #fff;
@@ -10,10 +9,29 @@
   background-size: auto, 24px 24px;
 }
 
-.inner {
-  max-width: 78rem;
+.layout {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 82rem;
   margin-inline: auto;
-  padding: clamp(2.6rem, 6vw, 4.3rem) clamp(1rem, 4vw, 3.5rem) clamp(2.75rem, 5vw, 4rem);
+  padding: clamp(2.6rem, 6vw, 4.3rem) clamp(1rem, 2.4vw, 2rem) clamp(2.75rem, 5vw, 4rem);
+}
+
+.content {
+  min-width: 0;
+  container-type: inline-size;
+}
+
+@media (min-width: 64rem) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) clamp(14rem, 19vw, 16rem);
+  }
+
+  .profile {
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+  }
 }
 
 .intro {
@@ -63,13 +81,14 @@
 .card {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: .28rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-content: center;
+  align-items: center;
+  gap: .3rem .4rem;
   height: 100%;
   min-height: 5.3rem;
-  padding: .95rem .85rem .95rem 1rem;
+  padding: .8rem clamp(.55rem, 1.5cqw, .9rem);
   border: 1px solid #d8e4f4;
   border-radius: .65rem;
   background: #fff;
@@ -89,22 +108,35 @@
 
 .cardTitle {
   color: #0f172a;
-  font-size: clamp(1rem, 2vw, 1.27rem);
+  font-size: clamp(1rem, 1.8cqw, 1.16rem);
   font-weight: 700;
   letter-spacing: -.035em;
   overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.cardCount {
+  border-radius: 999px;
+  padding: .15rem .4rem;
+  color: #1d4ed8;
+  background: #eff6ff;
+  font-size: .875rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .cardSummary {
+  grid-column: 1 / -1;
   color: #475569;
   font-size: .875rem;
   line-height: 1.4;
   word-break: keep-all;
 }
 
-@media (min-width: 52rem) {
+@container (min-width: 43rem) {
   .map {
-    height: clamp(23.5rem, 41vw, 31rem);
+    height: clamp(23.5rem, 46cqw, 29rem);
   }
 
   .diagram {
@@ -149,7 +181,7 @@
   .domains {
     position: relative;
     height: 100%;
-    grid-template-columns: 24% 24%;
+    grid-template-columns: 27% 27%;
     grid-template-rows: repeat(4, 1fr);
     grid-auto-flow: column;
     justify-content: space-between;
@@ -159,7 +191,6 @@
 
   .card {
     min-height: 4.8rem;
-    padding-inline: 1.25rem;
   }
 
   .card::before {

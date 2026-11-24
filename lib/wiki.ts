@@ -92,6 +92,13 @@ export function wikiDomainHref(id: string) {
   return `/wiki/${id}`
 }
 
+export function countWikiPostsByDomain(publishedSlugs: ReadonlySet<string>) {
+  return new Map(wikiDomains.map(({ id, chapters }) => {
+    const slugs = chapters.flatMap(({ posts }) => posts).filter((slug) => publishedSlugs.has(slug))
+    return [id, new Set(slugs).size] as const
+  }))
+}
+
 export function findWikiChapterForPost(slug: string) {
   for (const domain of wikiDomains) {
     const chapter = domain.chapters.find((entry) => entry.posts.includes(slug))
