@@ -4,7 +4,7 @@ import PostCard from '@/components/PostCard'
 import CategoryNav from '@/components/CategoryNav'
 
 export const metadata: Metadata = {
-  title: '블로그',
+  title: '글 보관함',
   description: '게임 개발, C++, C#, Unity, 디자인 패턴 관련 모든 게시물',
 }
 
@@ -15,7 +15,7 @@ export default function BlogPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-foreground">블로그</h1>
+        <h1 className="text-2xl font-bold text-foreground">글 보관함</h1>
         <p className="mt-1 text-sm text-muted">총 {posts.length}개의 게시물</p>
       </div>
 

@@ -6,7 +6,7 @@ export default function Footer() {
           <div>
             <p className="text-sm font-semibold text-foreground">메두사 개발 연구소</p>
             <p className="mt-1 text-xs text-muted">
-              게임 개발 공부 기록 블로그 · Game Development &amp; Programming
+              게임 개발 위키
             </p>
           </div>
           <div className="flex items-center gap-4 text-xs text-muted">

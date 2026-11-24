@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://medussion.github.io'
 const siteName = '메두사 개발 연구소'
 const siteDescription =
-  '게임 개발, C++, C#, Unity, 디자인 패턴을 공부하고 정리한 기술 블로그입니다.'
+  '게임 프로그래밍, 기획, 아트, UI/UX, QA, 출시와 운영을 분야별로 정리한 게임 개발 위키입니다.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
-  keywords: ['게임 개발', 'C++', 'C#', 'Unity', '디자인 패턴', '프로그래밍', '기술 블로그'],
+  keywords: ['게임 개발', 'C++', 'C#', 'Unity', '디자인 패턴', '프로그래밍', '게임 개발 위키'],
   authors: [{ name: 'medussion' }],
   creator: 'medussion',
   openGraph: {
@@ -63,7 +63,7 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-screen flex-col">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex flex-1 flex-col [&>section]:flex-1">{children}</main>
         <Footer />
       </body>
     </html>

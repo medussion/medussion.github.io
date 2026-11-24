@@ -12,6 +12,7 @@ import {
   formatDate,
   getCategoryLabel,
 } from '@/lib/posts'
+import { findWikiChapterForPost, wikiDomainHref } from '@/lib/wiki'
 import TOC from '@/components/TOC'
 
 interface PageProps {
@@ -73,6 +74,8 @@ export default async function PostPage({ params }: PageProps) {
   }
 
   const { frontmatter, content, readingTime } = post
+  const wikiEntry = findWikiChapterForPost(slug)
+  const chapterHref = wikiEntry ? `${wikiDomainHref(wikiEntry.domain.id)}#${wikiEntry.chapter.id}` : '/blog'
   const processedContent = processContent(content)
   const primaryCategory = frontmatter.categories[0] || 'etc'
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://medussion.github.io'
@@ -109,18 +112,26 @@ export default async function PostPage({ params }: PageProps) {
         <div className="flex flex-col gap-8 lg:flex-row">
           {/* Article */}
           <article className="flex-1 min-w-0">
-            {/* Breadcrumb */}
-            <nav className="mb-6 flex items-center gap-2 text-sm text-muted" aria-label="breadcrumb">
-              <Link href="/" className="hover:text-foreground transition-colors">홈</Link>
-              <span>/</span>
-              <Link href="/blog" className="hover:text-foreground transition-colors">블로그</Link>
-              <span>/</span>
-              <Link
-                href={`/categories/${primaryCategory}`}
-                className="hover:text-foreground transition-colors"
-              >
-                {getCategoryLabel(primaryCategory)}
-              </Link>
+            <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-muted" aria-label="현재 위치">
+              {wikiEntry ? (
+                <>
+                  <Link href="/" className="hover:text-foreground">게임 개발 위키</Link>
+                  <span aria-hidden="true">/</span>
+                  <Link href={wikiDomainHref(wikiEntry.domain.id)} className="hover:text-foreground">
+                    {wikiEntry.domain.name}
+                  </Link>
+                  <span aria-hidden="true">/</span>
+                  <Link href={chapterHref} className="hover:text-foreground">{wikiEntry.chapter.title}</Link>
+                </>
+              ) : (
+                <>
+                  <Link href="/blog" className="hover:text-foreground">글 보관함</Link>
+                  <span aria-hidden="true">/</span>
+                  <Link href={`/categories/${primaryCategory}`} className="hover:text-foreground">
+                    {getCategoryLabel(primaryCategory)}
+                  </Link>
+                </>
+              )}
             </nav>
 
             {/* Post header */}
@@ -174,14 +185,8 @@ export default async function PostPage({ params }: PageProps) {
 
             {/* Post footer */}
             <footer className="mt-10 border-t border-border pt-8">
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors"
-              >
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                블로그 목록으로
+              <Link href={chapterHref} className="text-sm font-medium text-muted hover:text-foreground hover:underline">
+                {wikiEntry ? `${wikiEntry.domain.name} 목차로` : '글 보관함으로'}
               </Link>
             </footer>
           </article>

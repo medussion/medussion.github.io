@@ -9,9 +9,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const navLinks = [
-    { href: '/', label: '홈' },
-    { href: '/blog', label: '블로그' },
-    { href: '/categories', label: '카테고리' },
+    { href: '/', label: '위키', active: pathname === '/' || pathname.startsWith('/wiki/') },
+    { href: '/blog', label: '글 보관함', active: pathname === '/blog' || pathname.startsWith('/blog/') },
   ]
 
   return (
@@ -34,7 +33,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               className={`text-sm font-medium transition-colors hover:text-accent ${
-                pathname === link.href
+                link.active
                   ? 'text-accent font-semibold'
                   : 'text-muted'
               }`}
@@ -60,7 +59,8 @@ export default function Header() {
         <button
           className="md:hidden text-muted hover:text-foreground transition-colors p-1"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="메뉴 열기"
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? '메뉴 닫기' : '메뉴 열기'}
         >
           {menuOpen ? (
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,7 +84,7 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className={`text-sm font-medium transition-colors hover:text-accent ${
-                  pathname === link.href ? 'text-accent font-semibold' : 'text-muted'
+                  link.active ? 'text-accent font-semibold' : 'text-muted'
                 }`}
               >
                 {link.label}
