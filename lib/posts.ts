@@ -137,6 +137,7 @@ export function getAllCategories(): Record<string, number> {
 
 export const CATEGORY_LABELS: Record<string, string> = {
   'Design-Pattern': '디자인 패턴',
+  'UI-UX': 'UI/UX 디자인',
   'Effective-CSharp': 'Effective C#',
   'Effective-Cpp': 'Effective C++',
   Seminar: '세미나',

@@ -29,6 +29,7 @@ export const wikiDomains: readonly WikiDomain[] = [
     summary: '화면 흐름 · 디자인 시스템',
     chapters: [
       { id: 'flows', title: '화면 흐름과 인터랙션', description: '플레이어가 화면에서 무엇을 해야 하는지 드러내고, 로딩·오류·성공 상태마다 다음 행동을 안내합니다.', posts: [] },
+      { id: 'combat-telegraphs', title: '전투 UI / 공격 예고', description: '공격 범위와 타격 시점을 화면에서 어떻게 전달할지 정리합니다.', posts: ['crimson-telegraph'] },
       { id: 'systems', title: '디자인 시스템과 타이포그래피', description: '버튼, 색상, 글자 스타일을 공통 규칙으로 묶고 작은 화면에서도 읽을 수 있는지 확인합니다.', posts: ['etc-4'] },
     ],
   },
